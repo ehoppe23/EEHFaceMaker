@@ -168,12 +168,14 @@ class Face extends SurfaceView{
     }
 
     /**
-     * Updates widgets to express values as set by randomizer or previousy by user
+     * Updates widgets to express values as set by randomizer or previously by user
      */
+
     public void updateWidgets(){
 
-        //Determine spinner selection
         int[] rgb = {0,0,0};
+
+        //Determine spinner selection
         if(radSelect == 1) { //Hair
             rgb = colorToRGB(this.hairColor);
         }

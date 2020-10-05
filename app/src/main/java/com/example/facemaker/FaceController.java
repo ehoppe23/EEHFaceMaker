@@ -57,9 +57,7 @@ public class FaceController implements View.OnClickListener, SeekBar.OnSeekBarCh
                 r = prog;
 
                 //Pull current color
-                if(radioSelection == 1) { color = face.getHairC(); } //Hair
-                else if(radioSelection == 2){ color = face.getEye(); } //Eyes
-                else if (radioSelection == 3) { color = face.getSkin(); } //Skin
+                color = getCurrentColor();
 
                 //Pull current aspects
                 rgb = face.colorToRGB(color);
@@ -73,9 +71,7 @@ public class FaceController implements View.OnClickListener, SeekBar.OnSeekBarCh
                 g = prog;
 
                 //Pull current color
-                if(radioSelection == 1) { color = face.getHairC(); } //Hair
-                else if(radioSelection == 2){ color = face.getEye(); } //Eyes
-                else if (radioSelection == 3) { color = face.getSkin(); } //Skin
+                color = getCurrentColor();
 
                 //Pull current aspects
                 rgb = face.colorToRGB(color);
@@ -89,9 +85,7 @@ public class FaceController implements View.OnClickListener, SeekBar.OnSeekBarCh
                 bl = prog;
 
                 //Pull current color
-                if(radioSelection == 1) { color = face.getHairC(); } //Hair
-                else if(radioSelection == 2){ color = face.getEye(); } //Eyes
-                else if (radioSelection == 3) { color = face.getSkin(); } //Skin
+                color = getCurrentColor();
 
                 //Pull current aspects
                 rgb = face.colorToRGB(color);
@@ -111,6 +105,19 @@ public class FaceController implements View.OnClickListener, SeekBar.OnSeekBarCh
         else if (radioSelection == 3) {face.setSkin(color); } //Skin
 
         face.invalidate();
+    }
+
+
+    /**
+     * helper method for onProgressChanged
+     * retuns the current color that is being modified
+     *
+     */
+    public int getCurrentColor(){
+        if(radioSelection == 1) { return face.getHairC(); } //Hair
+        else if(radioSelection == 2){ return face.getEye(); } //Eyes
+        else if (radioSelection == 3) { return face.getSkin(); } //Skin
+        else {return 0;}
     }
 
 
