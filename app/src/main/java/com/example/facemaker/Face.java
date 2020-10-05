@@ -101,6 +101,8 @@ class Face extends SurfaceView{
      * draws the face's skin, hair, and eyes
      * contains call to updateWidgets to manage randomized values
      *
+     * @caveat this display was designed for the provided class tablets,
+     * it does not display well on the virtual tablet
      * @param canvas the space on which to draw
      */
     public void onDraw(Canvas canvas) {
