@@ -97,6 +97,7 @@ class Face extends SurfaceView{
     Resource: Grace Penunuri
     Solution: Grace helped me understand the proportions for draw methods and how
      to set the paints and drawing*/
+
     /**
      * draws the face's skin, hair, and eyes
      * contains call to updateWidgets to manage randomized values
