@@ -96,7 +96,7 @@ class Face extends SurfaceView{
     Problem: I was struggling with how to properly use paints and drawing
     Resource: Grace Penunuri
     Solution: Grace helped me understand the proportions for draw methods and how
-     to set the paints and drawing*/
+     to set up the paints and drawing*/
 
     /**
      * draws the face's skin, hair, and eyes
@@ -107,7 +107,7 @@ class Face extends SurfaceView{
      * @param canvas the space on which to draw
      */
     public void onDraw(Canvas canvas) {
-        setBackgroundColor(this.skinColor);
+        setBackgroundColor(this.skinColor); // background of surfaceView is the skin
         drawHair(canvas);
         drawEyes(canvas);
         updateWidgets();
@@ -120,7 +120,7 @@ class Face extends SurfaceView{
      */
     public void drawHair(Canvas canvas) {
         hairPaint = new Paint();
-        hairPaint.setColor(hairColor);
+        hairPaint.setColor(hairColor); //User determined or randomized color
 
         //Manage which hairstyle is drawn
         switch (hairStyle) {
@@ -152,7 +152,7 @@ class Face extends SurfaceView{
 
         //Draw whites of the eyes
         Paint sclera = new Paint();
-        sclera.setColor(0xffffffff);
+        sclera.setColor(0xffffffff); //white
         RectF rect = new RectF(70,100,150,150);
         RectF rect2 = new RectF(170,100,250,150);
         canvas.drawOval(rect,sclera);
@@ -160,7 +160,7 @@ class Face extends SurfaceView{
 
         //Draws colored iris
         eyePaint = new Paint();
-        eyePaint.setColor(eyeColor);
+        eyePaint.setColor(eyeColor); //User determined or random color
         canvas.drawCircle(130,125,20,eyePaint);
         canvas.drawCircle(230,125,20,eyePaint);
 

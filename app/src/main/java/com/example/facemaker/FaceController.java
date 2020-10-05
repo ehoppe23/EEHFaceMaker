@@ -45,6 +45,7 @@ public class FaceController implements View.OnClickListener, SeekBar.OnSeekBarCh
 
         // Which seekBar is being listened to
         int id = seekBar.getId();
+
         int r,g,bl;
         int color = 0;
         int [] rgb;
