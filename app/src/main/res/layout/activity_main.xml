@@ -17,8 +17,8 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <SurfaceView
-                android:id="@+id/faceView"
+            <com.example.facemaker.Face
+                android:id="@+id/faceView1"
                 android:layout_width="223dp"
                 android:layout_height="191dp"
                 android:layout_marginTop="10dp" />
@@ -113,7 +113,7 @@
                         android:textSize="30sp" />
 
                     <Spinner
-                        android:id="@+id/styleSpinner"
+                        android:id="@+id/hairStyleSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight=".5"
@@ -129,6 +129,7 @@
                 Solution: I learned how to organize radio buttons into radio groups
                 */
                 <RadioGroup
+                    android:id="@+id/HESRadioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"

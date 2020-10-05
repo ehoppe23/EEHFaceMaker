@@ -10,68 +10,58 @@ package com.example.facemaker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.SurfaceView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
 
-    String[] hairStyles = {"Bald", "Short", "Medium", "Long"};
+    String[] hairStyles = {"Bald", "Short", "Long"};
     private Spinner hairSpinner;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        hairSpinner = findViewById(R.id.styleSpinner);
+        //Hair styles added to spinner
+        hairSpinner = findViewById(R.id.hairStyleSpinner);
         ArrayAdapter<String> hairAdapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_spinner_dropdown_item,
                 this.hairStyles);
         hairSpinner.setAdapter(hairAdapter);
 
+        //Widgets and listeners set up
+        Face faceView = findViewById(R.id.faceView1);
+        FaceController faceContr = new FaceController(faceView);
+
+        Button randomFaceB = findViewById(R.id.randomFaceButton);
+        randomFaceB.setOnClickListener(faceContr);
+
+        SeekBar redSB = findViewById(R.id.redSeekBar);
+        redSB.setOnSeekBarChangeListener(faceContr);
+
+        SeekBar greenSB = findViewById(R.id.greenSeekBar);
+        greenSB.setOnSeekBarChangeListener(faceContr);
+
+        SeekBar blueSB = findViewById(R.id.blueSeekBar);
+        blueSB.setOnSeekBarChangeListener(faceContr);
+
+        RadioGroup HESradioGroup = findViewById(R.id.HESRadioGroup);
+        HESradioGroup.setOnCheckedChangeListener(faceContr);
+
+        Spinner hairStyleSpinner = findViewById(R.id.hairStyleSpinner);
+        hairStyleSpinner.setOnItemSelectedListener(faceContr);
+
+        //Gives face access to widgets that require internal updates
+        faceView.setWidgets(redSB,greenSB,blueSB,hairStyleSpinner);
+
     }
 }
 
-/*
- * Face class
- *
- * Contains variables to manage skin, eye, and hair color
- * as well as hair style
- *
- * Contains 2 methods
- *      constructor - face()
- *      constructor support - randomize()
- */
-class face{
-    int skinColor;
-    int eyeColor;
-    int hairColor;
-    int hairStyle;
-
-    /**
-     * constructs face object by randomizing starting values
-     * using a call to the randomize method
-     *
-     * CAVEAT: Does not connect to XML code until part B of project
-     */
-    public void face() {
-        randomize();
-    }
-
-    /**
-     * randomizes values for all variables of face
-     * colors randomize from 0 to 255
-     * hair style randomizes from 1 to 4
-     */
-    public void randomize(){
-        this.skinColor = (int)Math.random()*256;
-        this.eyeColor = (int)Math.random()*256;
-        this.hairColor = (int)Math.random()*256;
-        this.hairStyle = (int)Math.random()*4 + 1;
-    }
-
-}
